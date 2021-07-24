@@ -1,18 +1,20 @@
 from itertools import *
 import itertools
 
-S = input()
+class Solution():
+    def chokudai(self, S):
+        chokudai_count = 0
+        h_list = [''.join(v) for v in list(itertools.combinations(S, 8))]
+        for h in h_list:
+            if h == 'chokudai':
+                chokudai_count += 1
 
-chokudai = 'chokudai'
-chokudai_count = 0
+        return chokudai_count % (10**9 + 7)
 
-# for i in range(len(S)-7):
-#     print(S[i:i+8])
+def main():
+    solution = Solution()
+    S = input()
+    print(solution.chokudai(S))
 
-h_list = [''.join(v) for v in list(itertools.combinations(S, 8))]
-for h in h_list:
-    if h == chokudai:
-        chokudai_count += 1
-
-# print(h_list)
-print(chokudai_count % (10**9 + 7))
+if __name__ == '__main__':
+    main()
